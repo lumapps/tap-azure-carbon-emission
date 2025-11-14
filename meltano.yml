@@ -1,0 +1,121 @@
+version: 1
+default_environment: dev
+project_id: tap-azure-carbon-emission
+
+environments:
+- name: dev
+- name: staging
+- name: prod
+
+plugins:
+  extractors:
+  - name: tap-azure-carbon-emission
+    namespace: tap_azure_carbon
+    pip_url: -e .
+    executable: tap-azure-carbon-emission
+    capabilities:
+    - catalog
+    - discover
+    - state
+    settings:
+    - name: access_token
+      kind: password
+      label: Access Token
+      description: Azure Bearer token for authentication to the Carbon API.
+      sensitive: true
+    - name: subscriptionList
+      kind: array
+      label: Subscription List
+      description: Array of Azure subscription IDs to query for carbon emission reports.
+    - name: carbonScopeList
+      kind: array
+      label: Carbon Scope List
+      description: Array of carbon scope types to include (e.g., ["Scope1", "Scope3"]).
+      value: ["Scope1", "Scope3"]
+    - name: start_date
+      kind: date_iso8601
+      label: Start Date
+      description: Start date for the carbon emission report (ISO 8601 format, e.g., "2024-05-01").
+    - name: end_date
+      kind: date_iso8601
+      label: End Date
+      description: End date for the carbon emission report (ISO 8601 format, e.g., "2024-05-01").
+    - name: reportType
+      kind: options
+      label: Report Type
+      description: Type of carbon emission report to generate.
+      options:
+      - label: Monthly Summary Report
+        value: MonthlySummaryReport
+      - label: Item Details Report
+        value: ItemDetailsReport
+      - label: Top Items Summary Report
+        value: TopItemsSummaryReport
+      - label: Top Items Monthly Summary Report
+        value: TopItemsMonthlySummaryReport
+      value: MonthlySummaryReport
+    - name: categoryType
+      kind: options
+      label: Category Type
+      description: Category type for ItemDetailsReport and TopItems reports.
+      options:
+      - label: Resource
+        value: Resource
+      - label: Resource Group
+        value: ResourceGroup
+      - label: Service
+        value: Service
+      value: Resource
+    - name: orderBy
+      kind: options
+      label: Order By
+      description: Field to order results by (for ItemDetailsReport).
+      options:
+      - label: Latest Month Emissions
+        value: LatestMonthEmissions
+      - label: Previous Month Emissions
+        value: PreviousMonthEmissions
+      - label: Month Over Month Change
+        value: MonthOverMonthChange
+      value: LatestMonthEmissions
+    - name: sortDirection
+      kind: options
+      label: Sort Direction
+      description: Sort direction for ordered results.
+      options:
+      - label: Ascending
+        value: Asc
+      - label: Descending
+        value: Desc
+      value: Desc
+    - name: pageSize
+      kind: integer
+      label: Page Size
+      description: Number of items per page for ItemDetailsReport.
+      value: 100
+    - name: topItems
+      kind: integer
+      label: Top Items
+      description: Number of top items to include in TopItems reports.
+      value: 10
+    - name: locationList
+      kind: array
+      label: Location List
+      description: Optional array of location filters.
+    - name: resourceGroupUrlList
+      kind: array
+      label: Resource Group URL List
+      description: Optional array of resource group URL filters.
+    - name: resourceTypeList
+      kind: array
+      label: Resource Type List
+      description: Optional array of resource type filters.
+    - name: base_url
+      kind: string
+      label: Base URL
+      description: Azure Management API base URL.
+      value: https://management.azure.com/
+  loaders:
+  - name: target-jsonl
+    variant: andyh1203
+    pip_url: target-jsonl

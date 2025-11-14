@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "properties": {
+    "dataType": {"type": "string"},
+    "date": {"type": "string"},
+    "carbonIntensity": {"type": ["number", "null"]},
+    "latestMonthEmissions": {"type": "number"},
+    "previousMonthEmissions": {"type": "number"},
+    "monthOverMonthEmissionsChangeRatio": {"type": "number"},
+    "monthlyEmissionsChangeValue": {"type": "number"},
+    "itemName": {"type": ["string", "null"]},
+    "resourceGroup": {"type": ["string", "null"]},
+    "resourceId": {"type": ["string", "null"]},
+    "subscriptionId": {"type": ["string", "null"]},
+    "categoryType": {"type": ["string", "null"]},
+    "resourceType": {"type": ["string", "null"]},
+    "location": {"type": ["string", "null"]}
+  },
+  "required": [
+    "dataType",
+    "date", 
+    "latestMonthEmissions",
+    "previousMonthEmissions",
+    "monthOverMonthEmissionsChangeRatio",
+    "monthlyEmissionsChangeValue"
+  ]
+}

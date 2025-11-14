@@ -1,0 +1,7 @@
+.meltano
+.venv
+.env
+plugins/
+output/
+
+__pycache__/
