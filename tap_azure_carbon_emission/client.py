@@ -15,7 +15,7 @@ class AzureCarbonStream(RESTStream):
 
     @property
     def authenticator(self) -> BearerTokenAuthenticator:
-        return BearerTokenAuthenticator(self, self.config["access_token"])
+        return BearerTokenAuthenticator(self, token=self.config["access_token"])
 
     def prepare_request_payload(
         self,
