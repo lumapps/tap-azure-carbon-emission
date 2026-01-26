@@ -6,17 +6,17 @@ class TapAzureCarbonEmission(Tap):
     config_jsonschema = {
         "type": "object",
         "properties": {
-            "subscriptionList": {"type": "array", "items": {"type": "string"}},
-            "carbonScopeList": {"type": "array", "items": {"type": "string"}},
+            "subscription_list": {"type": "array", "items": {"type": "string"}},
+            "carbon_scope_list": {"type": "array", "items": {"type": "string"}},
             "start_date": {"type": "string", "format": "date"},
             "end_date": {"type": "string", "format": "date"},
-            "reportType": {"type": "string"},
-            "categoryType": {"type": "string"},
-            "orderBy": {"type": "string"},
-            "sortDirection": {"type": "string"},
-            "pageSize": {"type": "integer"},
+            "report_type": {"type": "string"},
+            "category_type": {"type": "string"},
+            "order_by": {"type": "string"},
+            "sort_direction": {"type": "string"},
+            "page_size": {"type": "integer"},
         },
-        "required": ["reportType", "subscriptionList", "carbonScopeList", "start_date", "end_date"]
+        "required": ["report_type", "subscription_list", "carbon_scope_list", "start_date", "end_date"]
     }
 
     def discover_streams(self):
