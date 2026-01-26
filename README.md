@@ -23,11 +23,11 @@ pip install -e .
 Configure the tap with the following settings:
 
 - `access_token`: Azure Bearer token for authentication
-- `subscriptionList`: Array of Azure subscription IDs
-- `carbonScopeList`: Array of carbon scope types (default: ["Scope1", "Scope3"])
+- `subscription_list`: Array of Azure subscription IDs
+- `carbon_scope_list`: Array of carbon scope types (default: ["Scope1", "Scope3"])
 - `start_date`: Start date for the report (ISO 8601 format)
 - `end_date`: End date for the report (ISO 8601 format)
-- `reportType`: Type of report to generate (default: MonthlySummaryReport)
+- `report_type`: Type of report to generate (default: MonthlySummaryReport)
 
 ## Usage with Meltano
 
