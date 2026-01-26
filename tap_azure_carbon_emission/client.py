@@ -27,8 +27,8 @@ class AzureCarbonStream(RESTStream):
 
         payload = {
             "reportType": report_type,
-            "subscriptionList": self.config["subscriptionList"],
-            "carbonScopeList": self.config["carbonScopeList"],
+            "subscriptionList": self.config["subscription_list"],
+            "carbonScopeList": self.config["carbon_scope_list"],
             "dateRange": {
                 "start": self.config["start_date"],
                 "end": self.config["end_date"]
@@ -38,18 +38,18 @@ class AzureCarbonStream(RESTStream):
         # Extra fields by report type
         extra_fields = {
             "ItemDetailsReport": {
-                "categoryType": self.config.get("categoryType"),
-                "orderBy": self.config.get("orderBy"),
-                "pageSize": self.config.get("pageSize", 100),
-                "sortDirection": self.config.get("sortDirection"),
+                "categoryType": self.config.get("category_type"),
+                "orderBy": self.config.get("order_by"),
+                "pageSize": self.config.get("page_size", 100),
+                "sortDirection": self.config.get("sort_direction"),
             },
             "TopItemsSummaryReport": {
-                "categoryType": self.config.get("categoryType"),
-                "topItems": self.config.get("topItems"),
+                "categoryType": self.config.get("category_type"),
+                "topItems": self.config.get("top_items"),
             },
             "TopItemsMonthlySummaryReport": {
-                "categoryType": self.config.get("categoryType"),
-                "topItems": self.config.get("topItems"),
+                "categoryType": self.config.get("category_type"),
+                "topItems": self.config.get("top_items"),
             },
         }
 
@@ -57,7 +57,7 @@ class AzureCarbonStream(RESTStream):
             payload.update({k: v for k, v in extra_fields[report_type].items() if v is not None})
 
         # Optional filters
-        for field in ["locationList", "resourceGroupUrlList", "resourceTypeList"]:
+        for field in ["location_list", "resource_group_url_list", "resource_type_list"]:
             if field in self.config:
                 payload[field] = self.config[field]
 

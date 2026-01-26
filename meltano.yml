@@ -23,11 +23,11 @@ plugins:
       label: Access Token
       description: Azure Bearer token for authentication to the Carbon API.
       sensitive: true
-    - name: subscriptionList
+    - name: subscription_list
       kind: array
       label: Subscription List
       description: Array of Azure subscription IDs to query for carbon emission reports.
-    - name: carbonScopeList
+    - name: carbon_scope_list
       kind: array
       label: Carbon Scope List
       description: Array of carbon scope types to include (e.g., ["Scope1", "Scope3"]).
@@ -40,7 +40,7 @@ plugins:
       kind: date_iso8601
       label: End Date
       description: End date for the carbon emission report (ISO 8601 format, e.g., "2024-05-01").
-    - name: reportType
+    - name: report_type
       kind: options
       label: Report Type
       description: Type of carbon emission report to generate.
@@ -54,7 +54,7 @@ plugins:
       - label: Top Items Monthly Summary Report
         value: TopItemsMonthlySummaryReport
       value: MonthlySummaryReport
-    - name: categoryType
+    - name: category_type
       kind: options
       label: Category Type
       description: Category type for ItemDetailsReport and TopItems reports.
@@ -66,7 +66,7 @@ plugins:
       - label: Service
         value: Service
       value: Resource
-    - name: orderBy
+    - name: order_by
       kind: options
       label: Order By
       description: Field to order results by (for ItemDetailsReport).
@@ -78,7 +78,7 @@ plugins:
       - label: Month Over Month Change
         value: MonthOverMonthChange
       value: LatestMonthEmissions
-    - name: sortDirection
+    - name: sort_direction
       kind: options
       label: Sort Direction
       description: Sort direction for ordered results.
@@ -88,25 +88,25 @@ plugins:
       - label: Descending
         value: Desc
       value: Desc
-    - name: pageSize
+    - name: page_size
       kind: integer
       label: Page Size
       description: Number of items per page for ItemDetailsReport.
       value: 100
-    - name: topItems
+    - name: top_items
       kind: integer
       label: Top Items
       description: Number of top items to include in TopItems reports.
       value: 10
-    - name: locationList
+    - name: location_list
       kind: array
       label: Location List
       description: Optional array of location filters.
-    - name: resourceGroupUrlList
+    - name: resource_group_url_list
       kind: array
       label: Resource Group URL List
       description: Optional array of resource group URL filters.
-    - name: resourceTypeList
+    - name: resource_type_list
       kind: array
       label: Resource Type List
       description: Optional array of resource type filters.
