@@ -23,7 +23,7 @@ class AzureCarbonStream(RESTStream):
         next_page_token: Optional[Any] = None,
     ) -> Optional[dict]:
         """Prepare the data payload for the REST API request."""
-        report_type = self.config["reportType"]
+        report_type = self.config["report_type"]
 
         payload = {
             "reportType": report_type,
