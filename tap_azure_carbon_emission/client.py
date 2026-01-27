@@ -8,6 +8,9 @@ from singer_sdk.authenticators import BearerTokenAuthenticator
 
 class AzureCarbonStream(RESTStream):
 
+    replication_key = 'start_date'
+    is_sorted = True
+
     @property
     def url_base(self) -> str:
         """Return the API URL root, configurable via tap settings."""
