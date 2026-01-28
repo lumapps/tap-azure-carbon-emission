@@ -79,4 +79,12 @@ class AzureCarbonStream(RESTStream):
 
     def parse_response(self, response):
         data = response.json()
-        return data.get("value", [])
+        records = data.get("value", [])
+        
+        # Add start_date and end_date to each record if value exists
+        if records:
+            start_date = self.config["start_date"]
+            for record in records:
+                record["date"] = start_date
+        
+        return records

@@ -35,11 +35,11 @@ plugins:
     - name: start_date
       kind: date_iso8601
       label: Start Date
-      description: Start date for the carbon emission report (ISO 8601 format, e.g., "2024-05-01").
+      description: Start date for the carbon emission report (ISO 8601 format, e.g., "2024-05-01"). Optional - if not provided, automatically uses last month to handle the API's one-month delay.
     - name: end_date
       kind: date_iso8601
       label: End Date
-      description: End date for the carbon emission report (ISO 8601 format, e.g., "2024-05-01").
+      description: End date for the carbon emission report (ISO 8601 format, e.g., "2024-05-01"). Optional - if not provided, automatically uses last month to handle the API's one-month delay.
     - name: report_type
       kind: options
       label: Report Type
